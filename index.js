@@ -24,14 +24,25 @@ document.querySelector('form').addEventListener('submit', addMovie)
 
 const deleteMovie = (event) => {
       event.target.parentNode.remove()
-      message.textContent = "I'm scared Dave...wi-will I Dream?"
+      message.textContent = `${event.target.previousSibling.textContent}: I'm scared Dave...wi-will I Dream?`
+      revealMessage(1000)
 }
 
 const crosssOffMovie = (event) => {
       event.target.classList.toggle('checked')
       if(event.target.classList.contains('checked')){
-        message.textContent = "Another one bites the dust!"
+        message.textContent = `${event.target.textContent} bites the dust!`
       }else {
-        message.textContent = "Oops, I did it again..."
+        message.textContent = `${event.target.textContent} has returned!`
       }
+}
+
+const revealMessage = (timeOut) => {
+    // console.log(timeOut)
+    message.classList.remove('hide')
+    setTimeout(hideThisNoise = () =>{
+        message.classList.remove('hide')
+        message.classList.toggle('hide')
+    } ,timeOut)
+  
 }
